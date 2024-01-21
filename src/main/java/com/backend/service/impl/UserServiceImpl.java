@@ -52,6 +52,15 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public void logoutUser(String userEmail) {
+        User user = findByEmail(userEmail);
+        if (user != null) {
+            user.setLoggedIn(false);
+            userRepository.save(user);
+        }
+    }
+
+    @Override
     public User findByEmail(String email) {
         User user = userRepository.findByEmail(email.toLowerCase());
         return user;
