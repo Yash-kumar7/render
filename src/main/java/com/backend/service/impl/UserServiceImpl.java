@@ -41,7 +41,6 @@ public class UserServiceImpl implements UserService {
         {
             user.setLoggedIn(true);
             userRepository.save(user);
-            System.out.println("Regular Login successful");
             return true;
         }
         else
