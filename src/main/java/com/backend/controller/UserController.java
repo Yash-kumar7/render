@@ -25,6 +25,7 @@ public class UserController {
     public ResponseEntity<String> registerUser(@RequestBody UserDto userDto) {
         try {
             userService.registerUser(userDto);
+            System.out.println("User registered successfully");
             return ResponseEntity.ok("User registered successfully");
         }
         catch (UserAlreadyExistsException e) {
@@ -52,6 +53,7 @@ public class UserController {
             }
         } else {
             if(userService.loginUser(userDto)) {
+                System.out.println("Login successful");
                 return ResponseEntity.ok("Login successful");
             }
             else
