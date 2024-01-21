@@ -60,4 +60,14 @@ public class UserController {
             }
         }
     }
+
+    @PostMapping("/logout")
+    public ResponseEntity<String> logoutUser(@RequestBody UserDto userDto) {
+        try {
+            userService.logoutUser(userDto.getEmail());
+            return ResponseEntity.ok("Logout successful");
+        } catch (Throwable t) {
+            return new ResponseEntity<>("An error occurred.", HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
 }
